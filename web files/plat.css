@@ -1,33 +1,32 @@
 body {
-    margin: 0;
-  }
-  #player {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 50px;
-    height: 50px;
-    background-color: lawngreen;
-  }
-  #platform {
-    position: absolute;
-    width: 100vw;
-    height: 1vh;
-    top: 90vh;
-    background-color: black;
-  }
-  #lazer1 {
-    background-color: rgba(0, 0, 0, 0);
-    position: absolute;
-    height: 2px;
-    width: 49px;
-  }
-  #platform2 {
-    position: absolute;
-    width: 50vw;
-    left: 35vw;
-    height: 1vh;
-    top: 83vh;
-    background-color: black;
-  }
-  
+  margin: 0;
+}
+#player {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  background-color: lawngreen;
+}
+#platform {
+  position: absolute;
+  width: 100vw;
+  height: 1vh;
+  top: 90vh;
+  background-color: black;
+}
+#lazer1 {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  height: 2px;
+  width: 49px;
+}
+#platform2 {
+  position: absolute;
+  width: 50vw;
+  left: 35vw;
+  height: 1vh;
+  top: 83vh;
+  background-color: black;
+}
