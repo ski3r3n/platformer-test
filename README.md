@@ -1,5 +1,3 @@
-# platformer test
- A platformer test
 ## A platformer web project, work in progress
 
 
