@@ -16,8 +16,8 @@ body {
   top: 90vh;
   background-color: black;
 }
-#lazer1 {
-  background-color: rgba(0, 0, 0, 0);
+#lazerbottom {
+  background-color: rgba(69, 69, 69, 0);
   position: absolute;
   height: 2px;
   width: 49px;

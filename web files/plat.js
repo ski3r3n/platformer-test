@@ -1,7 +1,6 @@
 var player;
-var leftlazer;
-var platform;
-var platform2;
+var bottomlazer;
+var platforms;
 var gravity = 0;
 function offsetOverlap(a, b) {
   let xa = a.offsetLeft;
@@ -31,40 +30,33 @@ function offsetOverlap(a, b) {
     return false;
   }
 }
-function testforfall() {
-  if (
-    offsetOverlap(leftlazer, platform) ||
-    offsetOverlap(leftlazer, platform2)
-  ) {
-    if (offsetOverlap(leftlazer, platform)) {
-      var plattouch = platform;
-    } else {
-      var plattouch = platform2;
+
+function betterfall() {
+  console.log(platforms)
+  for(let elem = 0; elem < platforms.length; elem++){
+    console.log(elem)
+    let plat = platforms[elem];
+    if (offsetOverlap(bottomlazer, plat)){
+      if (offsetOverlap(player, plat)){
+        gravity = -0.5;
+      }
+      else {
+        gravity = 0;
+      }
+      player.style.top = parseFloat(window.getComputedStyle(player).top.split("px")[0]) + gravity + "px";
+      console.log('undefined')
+      return undefined;
     }
-    if (offsetOverlap(player, plattouch)) {
-      gravity = -0.5;
-      player.style.top =
-        parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
-        gravity +
-        "px";
-    } else {
-      gravity = 0;
-    }
-  } else {
-    if (gravity < 6.95) {
-      gravity += 0.05;
-    } else {
-      gravity = 7;
-    }
-    //console.info(gravity)
-    player.style.top =
-      parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
-      gravity +
-      "px";
   }
-  //console.info('falltest')
+  if(gravity < 6.95){
+    gravity += 0.05
+  }
+  else{
+    gravity = 7
+  }
+  player.style.top = parseFloat(window.getComputedStyle(player).top.split("px")[0]) + gravity + "px";
 }
-var curkey = [, ,];
+var curkey = [];
 document.addEventListener("keydown", (event) => move(event));
 document.addEventListener("keyup", (event) => antimove(event));
 function move(even) {
@@ -89,31 +81,30 @@ function testformove() {
       2 +
       "px";
   }
-  if (
-    curkey[38] /*up*/ &&
-    (offsetOverlap(leftlazer, platform) || offsetOverlap(leftlazer, platform2))
-  ) {
-    gravity = -4;
-    player.style.top =
-      parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
-      gravity +
-      "px";
+  if(curkey[38]){
+    for(let elem = 0; elem < platforms.length; elem++){
+      let plat = platforms[elem]
+      if(offsetOverlap(bottomlazer, plat)){
+        gravity = -4;
+        player.style.top = parseFloat(window.getComputedStyle(player).top.split("px")[0]) + gravity + "px";
+      }
+    }
   }
-  if (
-    curkey[40] /*down*/ &&
-    (offsetOverlap(leftlazer, platform) || offsetOverlap(leftlazer, platform2))
-  ) {
-    gravity = -6;
-    player.style.top =
-      parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
-      gravity +
-      "px";
+  if (curkey[40]){
+    for(let elem = 0; elem < platforms.length; elem++){
+      let plat = platforms[elem]
+      if(offsetOverlap(bottomlazer, plat)){
+        gravity = -6;
+        player.style.top = parseFloat(window.getComputedStyle(player).top.split("px")[0]) + gravity + "px";
+      }
+    }
   }
 }
+
 function intervalother() {
-  leftlazer.style.left =
+  bottomlazer.style.left =
     window.getComputedStyle(player).left.split("px")[0] + "px";
-  leftlazer.style.top =
+  bottomlazer.style.top =
     parseInt(window.getComputedStyle(player).top.split("px")[0]) +
     parseInt(window.getComputedStyle(player).height.split("px")[0]) +
     "px";
@@ -121,10 +112,9 @@ function intervalother() {
 }
 function definevars() {
   player = document.getElementById("player");
-  leftlazer = document.getElementById("lazer1");
-  platform = document.getElementById("platform");
-  platform2 = document.getElementById("platform2");
-  const falltest = setInterval(testforfall, 1);
+  bottomlazer = document.getElementById("lazerbottom");
+  platforms = document.getElementsByClassName("platforms")
+  const falltest = setInterval(betterfall, 1);
   const movetest = setInterval(testformove, 1);
   const otherinterval = setInterval(intervalother, 1);
 }
