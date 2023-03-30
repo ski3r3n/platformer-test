@@ -32,29 +32,33 @@ function offsetOverlap(a, b) {
 }
 
 function betterfall() {
-  console.log(platforms)
-  for(let elem = 0; elem < platforms.length; elem++){
-    console.log(elem)
+  console.log(platforms);
+  for (let elem = 0; elem < platforms.length; elem++) {
+    console.log(elem);
     let plat = platforms[elem];
-    if (offsetOverlap(bottomlazer, plat)){
-      if (offsetOverlap(player, plat)){
+    if (offsetOverlap(bottomlazer, plat)) {
+      if (offsetOverlap(player, plat)) {
         gravity = -0.5;
-      }
-      else {
+      } else {
         gravity = 0;
       }
-      player.style.top = parseFloat(window.getComputedStyle(player).top.split("px")[0]) + gravity + "px";
-      console.log('undefined')
+      player.style.top =
+        parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
+        gravity +
+        "px";
+      console.log("undefined");
       return undefined;
     }
   }
-  if(gravity < 6.95){
-    gravity += 0.05
+  if (gravity < 6.95) {
+    gravity += 0.05;
+  } else {
+    gravity = 7;
   }
-  else{
-    gravity = 7
-  }
-  player.style.top = parseFloat(window.getComputedStyle(player).top.split("px")[0]) + gravity + "px";
+  player.style.top =
+    parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
+    gravity +
+    "px";
 }
 var curkey = [];
 document.addEventListener("keydown", (event) => move(event));
@@ -81,21 +85,27 @@ function testformove() {
       2 +
       "px";
   }
-  if(curkey[38]){
-    for(let elem = 0; elem < platforms.length; elem++){
-      let plat = platforms[elem]
-      if(offsetOverlap(bottomlazer, plat)){
+  if (curkey[38]) {
+    for (let elem = 0; elem < platforms.length; elem++) {
+      let plat = platforms[elem];
+      if (offsetOverlap(bottomlazer, plat)) {
         gravity = -4;
-        player.style.top = parseFloat(window.getComputedStyle(player).top.split("px")[0]) + gravity + "px";
+        player.style.top =
+          parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
+          gravity +
+          "px";
       }
     }
   }
-  if (curkey[40]){
-    for(let elem = 0; elem < platforms.length; elem++){
-      let plat = platforms[elem]
-      if(offsetOverlap(bottomlazer, plat)){
+  if (curkey[40]) {
+    for (let elem = 0; elem < platforms.length; elem++) {
+      let plat = platforms[elem];
+      if (offsetOverlap(bottomlazer, plat)) {
         gravity = -6;
-        player.style.top = parseFloat(window.getComputedStyle(player).top.split("px")[0]) + gravity + "px";
+        player.style.top =
+          parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
+          gravity +
+          "px";
       }
     }
   }
@@ -113,7 +123,7 @@ function intervalother() {
 function definevars() {
   player = document.getElementById("player");
   bottomlazer = document.getElementById("lazerbottom");
-  platforms = document.getElementsByClassName("platforms")
+  platforms = document.getElementsByClassName("platforms");
   const falltest = setInterval(betterfall, 1);
   const movetest = setInterval(testformove, 1);
   const otherinterval = setInterval(intervalother, 1);
