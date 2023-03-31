@@ -1,6 +1,10 @@
 var player;
 var bottomlazer;
 var platforms;
+var weight = 0.05;
+var inweight;
+var height = -4;
+var inheight;
 var gravity = 0;
 function offsetOverlap(a, b) {
   let xa = a.offsetLeft;
@@ -30,6 +34,12 @@ function offsetOverlap(a, b) {
     return false;
   }
 }
+function changeweight() {
+  weight = inweight.value;
+}
+function changeheight() {
+  height = inheight.value;
+}
 
 function betterfall() {
   console.log(platforms);
@@ -51,7 +61,7 @@ function betterfall() {
     }
   }
   if (gravity < 6.95) {
-    gravity += 0.05;
+    gravity += weight;
   } else {
     gravity = 7;
   }
@@ -89,7 +99,7 @@ function testformove() {
     for (let elem = 0; elem < platforms.length; elem++) {
       let plat = platforms[elem];
       if (offsetOverlap(bottomlazer, plat)) {
-        gravity = -4;
+        gravity = height;
         player.style.top =
           parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
           gravity +
@@ -101,7 +111,7 @@ function testformove() {
     for (let elem = 0; elem < platforms.length; elem++) {
       let plat = platforms[elem];
       if (offsetOverlap(bottomlazer, plat)) {
-        gravity = -6;
+        gravity = height * 1.5;
         player.style.top =
           parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
           gravity +
@@ -124,6 +134,8 @@ function definevars() {
   player = document.getElementById("player");
   bottomlazer = document.getElementById("lazerbottom");
   platforms = document.getElementsByClassName("platforms");
+  inweight = document.getElementById("jumpweight");
+  inheight = document.getElementById("jumpheight");
   const falltest = setInterval(betterfall, 1);
   const movetest = setInterval(testformove, 1);
   const otherinterval = setInterval(intervalother, 1);
