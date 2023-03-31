@@ -27,6 +27,14 @@ body {
   width: 50vw;
   left: 35vw;
   height: 1vh;
-  top: 83vh;
+  top: 78vh;
   background-color: black;
+}
+#platform3 {
+  position: absolute;
+  background-color: black;
+  width: 25vw;
+  left: 10vw;
+  height: 1vh;
+  top: 64vh;
 }
