@@ -61,7 +61,7 @@ function betterfall() {
     }
   }
   if (gravity < 6.95) {
-    gravity += weight;
+    gravity += weight * 1;
   } else {
     gravity = 7;
   }
@@ -99,7 +99,7 @@ function testformove() {
     for (let elem = 0; elem < platforms.length; elem++) {
       let plat = platforms[elem];
       if (offsetOverlap(bottomlazer, plat)) {
-        gravity = height;
+        gravity = height * 1;
         player.style.top =
           parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
           gravity +
@@ -111,7 +111,7 @@ function testformove() {
     for (let elem = 0; elem < platforms.length; elem++) {
       let plat = platforms[elem];
       if (offsetOverlap(bottomlazer, plat)) {
-        gravity = height * 1.5;
+        gravity = 1;
         player.style.top =
           parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
           gravity +
