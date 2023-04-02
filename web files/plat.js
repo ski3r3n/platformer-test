@@ -114,7 +114,7 @@ function testformove() {
         break;
       }
     }
-    if (righttest = false){
+    if (righttest == false){
       player.style.left =
         parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
         2 +
