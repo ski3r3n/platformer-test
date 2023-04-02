@@ -16,11 +16,15 @@ body {
   top: 90vh;
   background-color: black;
 }
-#lazerbottom {
-  background-color: rgba(69, 69, 69, 0);
-  position: absolute;
+#lazerbottom,
+#lazertop {
   height: 2px;
-  width: 49px;
+  width: 51px;
+}
+#lazerleft,
+#lazerright {
+  height: 49px;
+  width: 2px;
 }
 #platform2 {
   position: absolute;
@@ -37,4 +41,16 @@ body {
   left: 10vw;
   height: 1vh;
   top: 64vh;
+}
+#platform4 {
+  position: absolute;
+  background-color: black;
+  width: 10vw;
+  left: 10vw;
+  height: 10vh;
+  top: 80vh;
+}
+.lazer {
+  position: absolute;
+  background-color: limegreen;
 }
