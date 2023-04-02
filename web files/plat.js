@@ -88,30 +88,38 @@ function antimove(evennt) {
   curkey[evennt.keyCode] = false;
   //console.info(curkey.keyCode)
 }
+var lefttest = false;
+var righttest = false;
 function testformove() {
   if (curkey[37] /*left*/) {
     for (let elem = 0; elem < platforms.length; elem++) {
       let plat = platforms[elem];
       if (offsetOverlap(leftlazer, plat)) {
-        return undefined;
+        lefttest = true;
+        break;
       }
     }
-    player.style.left =
-      parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
-      -2 +
-      "px";
+    if (lefttest == false){
+      player.style.left =
+        parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
+        -2 +
+        "px";
+    }
   }
   if (curkey[39] /*right*/) {
     for (let elem = 0; elem < platforms.length; elem++) {
       let plat = platforms[elem];
       if (offsetOverlap(rightlazer, plat)) {
-        return undefined;
+        righttest = true
+        break;
       }
     }
-    player.style.left =
-      parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
-      2 +
-      "px";
+    if (righttest = false){
+      player.style.left =
+        parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
+        2 +
+        "px";
+    }
   }
   if (curkey[38]) {
     for (let elem = 0; elem < platforms.length; elem++) {
@@ -125,6 +133,8 @@ function testformove() {
       }
     }
   }
+  lefttest = false;
+  righttest = false;
 }
 
 function intervalother() {
