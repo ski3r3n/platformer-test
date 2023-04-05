@@ -99,7 +99,7 @@ function testformove() {
         break;
       }
     }
-    if (lefttest == false){
+    if (lefttest == false) {
       player.style.left =
         parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
         -2 +
@@ -110,11 +110,11 @@ function testformove() {
     for (let elem = 0; elem < platforms.length; elem++) {
       let plat = platforms[elem];
       if (offsetOverlap(rightlazer, plat)) {
-        righttest = true
+        righttest = true;
         break;
       }
     }
-    if (righttest == false){
+    if (righttest == false) {
       player.style.left =
         parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
         2 +
@@ -139,29 +139,46 @@ function testformove() {
 
 function intervalother() {
   bottomlazer.style.left =
-    parseFloat(window.getComputedStyle(player).left.split("px")[0]) + "px";
+    parseFloat(window.getComputedStyle(player).left.split("px")[0]) + 1 + "px";
   bottomlazer.style.top =
     parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
     parseFloat(window.getComputedStyle(player).height.split("px")[0]) -
     1 +
     "px";
   leftlazer.style.left =
-    parseFloat(window.getComputedStyle(player).left.split("px")[0]) -
-    1.5 +
-    "px";
+    parseFloat(window.getComputedStyle(player).left.split("px")[0]) - 1 + "px";
   leftlazer.style.top =
-    window.getComputedStyle(player).top.split("px")[0] + "px";
+    parseFloat(window.getComputedStyle(player).top.split("px")[0]) + 1 + "px";
   rightlazer.style.left =
     parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
     parseFloat(window.getComputedStyle(player).width.split("px")[0]) +
     "px";
   rightlazer.style.top =
-    window.getComputedStyle(player).top.split("px")[0] + "px";
+    parseFloat(window.getComputedStyle(player).top.split("px")[0]) + 1 + "px";
   toplazer.style.left =
-    parseFloat(window.getComputedStyle(player).left.split("px")[0]) + "px";
+    parseFloat(window.getComputedStyle(player).left.split("px")[0]) + 1 + "px";
   toplazer.style.top =
-    parseFloat(window.getComputedStyle(player).top.split("px")[0]) + "px";
+    parseFloat(window.getComputedStyle(player).top.split("px")[0]) - 1 + "px";
   //console.info('otherinterval')
+}
+function sideinterval() {
+  for (let elem = 0; elem < platforms.length; elem++) {
+    let plat = platforms[elem];
+    if (offsetOverlap(leftlazer, plat)) {
+      lefttest = true;
+      player.style.left =
+        parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
+        2 +
+        "px";
+    }
+    if (offsetOverlap(rightlazer, plat)) {
+      lefttest = true;
+      player.style.left =
+        parseFloat(window.getComputedStyle(player).left.split("px")[0]) -
+        2 +
+        "px";
+    }
+  }
 }
 function definevars() {
   player = document.getElementById("player");
@@ -172,6 +189,7 @@ function definevars() {
   platforms = document.getElementsByClassName("platforms");
   inweight = document.getElementById("jumpweight");
   inheight = document.getElementById("jumpheight");
+  const intervalside = setInterval(sideinterval, 0);
   const falltest = setInterval(betterfall, 1);
   const movetest = setInterval(testformove, 1);
   const otherinterval = setInterval(intervalother, 1);
