@@ -45,9 +45,7 @@ function changeheight() {
 }
 
 function betterfall() {
-  console.log(platforms);
   for (let elem = 0; elem < platforms.length; elem++) {
-    console.log(elem);
     let plat = platforms[elem];
     if (offsetOverlap(toplazer, plat) && offsetOverlap(player, plat)) {
       gravity = Math.abs(gravity * 0.5);
@@ -62,7 +60,6 @@ function betterfall() {
         parseFloat(window.getComputedStyle(player).top.split("px")[0]) +
         gravity +
         "px";
-      console.log("undefined");
       return undefined;
     }
   }
