@@ -147,7 +147,7 @@ function intervalother() {
   leftlazer.style.top =
     parseFloat(window.getComputedStyle(player).top.split("px")[0]) + 1 + "px";
   rightlazer.style.left =
-    parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
+    parseFloat(window.getComputedStyle(player).left.split("px")[0]) + 1 +
     parseFloat(window.getComputedStyle(player).width.split("px")[0]) +
     "px";
   rightlazer.style.top =
