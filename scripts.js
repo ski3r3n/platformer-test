@@ -89,13 +89,6 @@ var lefttest = false;
 var righttest = false;
 function testformove() {
   if (curkey[37] /*left*/) {
-    for (let elem = 0; elem < platforms.length; elem++) {
-      let plat = platforms[elem];
-      if (offsetOverlap(leftlazer, plat)) {
-        lefttest = true;
-        break;
-      }
-    }
     if (lefttest == false) {
       player.style.left =
         parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
@@ -104,13 +97,6 @@ function testformove() {
     }
   }
   if (curkey[39] /*right*/) {
-    for (let elem = 0; elem < platforms.length; elem++) {
-      let plat = platforms[elem];
-      if (offsetOverlap(rightlazer, plat)) {
-        righttest = true;
-        break;
-      }
-    }
     if (righttest == false) {
       player.style.left =
         parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
@@ -130,8 +116,6 @@ function testformove() {
       }
     }
   }
-  lefttest = false;
-  righttest = false;
 }
 
 function intervalother() {
@@ -167,13 +151,17 @@ function sideinterval() {
         parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
         2 +
         "px";
+    } else {
+      lefttest = false;
     }
     if (offsetOverlap(rightlazer, plat)) {
-      lefttest = true;
+      righttest = true;
       player.style.left =
         parseFloat(window.getComputedStyle(player).left.split("px")[0]) -
         2 +
         "px";
+    } else {
+      righttest = false;
     }
   }
 }
