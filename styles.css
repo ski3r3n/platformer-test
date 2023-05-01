@@ -54,3 +54,65 @@ body {
   position: absolute;
   background-color: rgba(69, 69, 69, /*0.69*/ 0);
 }
+.bullet {
+  height: 25px;
+  border: solid;
+  width: 25px;
+  position: absolute;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+}
+#b1 {
+  animation-name: shoot1;
+}
+#b2 {
+  animation-name: shoot2;
+}
+#b3 {
+  animation-name: shoot3;
+}
+#bullet::after {
+  content: var(--toppos);
+}
+@keyframes shoot1 {
+  0% {
+    top: var(--topfpos);
+    left: var(--leftfpos1);
+  }
+  100% {
+    top: var(--topnpos);
+    left: var(--leftnpos1);
+  }
+}
+@keyframes shoot2 {
+  0% {
+    top: var(--topfpos);
+    left: var(--leftfpos2);
+  }
+  100% {
+    top: var(--topnpos);
+    left: var(--leftnpos2);
+  }
+}
+@keyframes shoot3 {
+  0% {
+    top: var(--topfpos);
+    left: var(--leftfpos3);
+  }
+  100% {
+    top: var(--topnpos);
+    left: var(--leftnpos3);
+  }
+}
+:root {
+  --topfpos: 0%;
+  --topnpos: 100%;
+  --leftfpos1: 100%;
+  --leftnpos1: 100%;
+  --leftfpos2: 100%;
+  --leftnpos2: 100%;
+  --leftfpos3: 100%;
+  --leftnpos3: 100%;
+}

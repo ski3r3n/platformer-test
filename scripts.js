@@ -1,4 +1,6 @@
 var player;
+var bullets;
+var root;
 var bottomlazer;
 var toplazer;
 var leftlazer;
@@ -43,7 +45,6 @@ function changeweight() {
 function changeheight() {
   height = inheight.value;
 }
-
 function betterfall() {
   for (let elem = 0; elem < platforms.length; elem++) {
     let plat = platforms[elem];
@@ -131,7 +132,8 @@ function intervalother() {
   leftlazer.style.top =
     parseFloat(window.getComputedStyle(player).top.split("px")[0]) + 1 + "px";
   rightlazer.style.left =
-    parseFloat(window.getComputedStyle(player).left.split("px")[0]) + 1 +
+    parseFloat(window.getComputedStyle(player).left.split("px")[0]) +
+    1 +
     parseFloat(window.getComputedStyle(player).width.split("px")[0]) +
     "px";
   rightlazer.style.top =
@@ -165,7 +167,30 @@ function sideinterval() {
     }
   }
 }
+function bulletinterval() {
+  let rt = getComputedStyle(root);
+  root.style.setProperty("--leftfpos1", rt.getPropertyValue("--leftnpos1"));
+  root.style.setProperty("--leftnpos1", Math.random() * 100 + "%");
+  root.style.setProperty("--leftfpos2", rt.getPropertyValue("--leftnpos2"));
+  root.style.setProperty("--leftnpos2", Math.random() * 100 + "%");
+  root.style.setProperty("--leftfpos3", rt.getPropertyValue("--leftnpos3"));
+  root.style.setProperty("--leftnpos3", Math.random() * 100 + "%");
+}
+function checkbullet() {
+  for (let elem = 0; elem < platforms.length; elem++) {
+    let plat = bullets[elem];
+    if (offsetOverlap(leftlazer, plat)) {
+      document.write("YOU LOSE! HIT RELOAD TO PLAY AGAIN.");
+    }
+  }
+}
 function definevars() {
+  bullets = [
+    document.getElementById("b1"),
+    document.getElementById("b2"),
+    document.getElementById("b3"),
+  ];
+  root = document.querySelector(":root");
   player = document.getElementById("player");
   bottomlazer = document.getElementById("lazerbottom");
   toplazer = document.getElementById("lazertop");
@@ -174,6 +199,8 @@ function definevars() {
   platforms = document.getElementsByClassName("platforms");
   inweight = document.getElementById("jumpweight");
   inheight = document.getElementById("jumpheight");
+  const bulletupdate = setInterval(bulletinterval, 1000);
+  const bulletcheck = setInterval(checkbullet, 0);
   const intervalside = setInterval(sideinterval, 0);
   const falltest = setInterval(betterfall, 1);
   const movetest = setInterval(testformove, 1);
