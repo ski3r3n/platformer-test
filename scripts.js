@@ -179,7 +179,7 @@ function bulletinterval() {
 function checkbullet() {
   for (let elem = 0; elem < platforms.length; elem++) {
     let plat = bullets[elem];
-    if (offsetOverlap(leftlazer, plat)) {
+    if (offsetOverlap(player, plat)) {
       document.write("YOU LOSE! HIT RELOAD TO PLAY AGAIN.");
     }
   }
