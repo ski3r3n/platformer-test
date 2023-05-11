@@ -1,118 +1,118 @@
 body {
-  margin: 0;
+    margin: 0;
 }
 #player {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  width: 50px;
-  height: 50px;
-  background-color: lawngreen;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 50px;
+    height: 50px;
+    background-color: lawngreen;
 }
 #platform {
-  position: absolute;
-  width: 100vw;
-  height: 1vh;
-  top: 90vh;
-  background-color: black;
+    position: absolute;
+    width: 100vw;
+    height: 1vh;
+    top: 90vh;
+    background-color: black;
 }
 #lazertop,
 #lazerbottom {
-  height: 2px;
-  width: 48px;
+    height: 2px;
+    width: 48px;
 }
 #lazerleft,
 #lazerright {
-  height: 47px;
-  width: 1px;
+    height: 47px;
+    width: 1px;
 }
 #platform2 {
-  position: absolute;
-  width: 50vw;
-  left: 35vw;
-  height: 1vh;
-  top: 78vh;
-  background-color: black;
+    position: absolute;
+    width: 50vw;
+    left: 35vw;
+    height: 1vh;
+    top: 78vh;
+    background-color: black;
 }
 #platform3 {
-  position: absolute;
-  background-color: black;
-  width: 25vw;
-  left: 10vw;
-  height: 1vh;
-  top: 64vh;
+    position: absolute;
+    background-color: black;
+    width: 25vw;
+    left: 10vw;
+    height: 1vh;
+    top: 64vh;
 }
 #platform4 {
-  position: absolute;
-  background-color: black;
-  width: 10vw;
-  left: 10vw;
-  height: 10vh;
-  top: 80vh;
+    position: absolute;
+    background-color: black;
+    width: 10vw;
+    left: 10vw;
+    height: 10vh;
+    top: 80vh;
 }
 .lazer {
-  position: absolute;
-  background-color: rgba(69, 69, 69, /*0.69*/ 0);
+    position: absolute;
+    background-color: rgba(69, 69, 69, /*0.69*/ 0);
 }
 .bullet {
-  height: 25px;
-  border: solid;
-  width: 25px;
-  position: absolute;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-delay: 0s;
+    height: 25px;
+    border: solid;
+    width: 25px;
+    position: absolute;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: 0s;
 }
 #b1 {
-  animation-name: shoot1;
+    animation-name: shoot1;
 }
 #b2 {
-  animation-name: shoot2;
+    animation-name: shoot2;
 }
 #b3 {
-  animation-name: shoot3;
+    animation-name: shoot3;
 }
 #bullet::after {
-  content: var(--toppos);
+    content: var(--toppos);
 }
 @keyframes shoot1 {
-  0% {
-    top: var(--topfpos);
-    left: var(--leftfpos1);
-  }
-  100% {
-    top: var(--topnpos);
-    left: var(--leftnpos1);
-  }
+    0% {
+        top: var(--topfpos);
+        left: var(--leftfpos1);
+    }
+    100% {
+        top: var(--topnpos);
+        left: var(--leftnpos1);
+    }
 }
 @keyframes shoot2 {
-  0% {
-    top: var(--topfpos);
-    left: var(--leftfpos2);
-  }
-  100% {
-    top: var(--topnpos);
-    left: var(--leftnpos2);
-  }
+    0% {
+        top: var(--topfpos);
+        left: var(--leftfpos2);
+    }
+    100% {
+        top: var(--topnpos);
+        left: var(--leftnpos2);
+    }
 }
 @keyframes shoot3 {
-  0% {
-    top: var(--topfpos);
-    left: var(--leftfpos3);
-  }
-  100% {
-    top: var(--topnpos);
-    left: var(--leftnpos3);
-  }
+    0% {
+        top: var(--topfpos);
+        left: var(--leftfpos3);
+    }
+    100% {
+        top: var(--topnpos);
+        left: var(--leftnpos3);
+    }
 }
 :root {
-  --topfpos: 0%;
-  --topnpos: 100%;
-  --leftfpos1: 100%;
-  --leftnpos1: 100%;
-  --leftfpos2: 100%;
-  --leftnpos2: 100%;
-  --leftfpos3: 100%;
-  --leftnpos3: 100%;
+    --topfpos: 0%;
+    --topnpos: 100%;
+    --leftfpos1: 100%;
+    --leftnpos1: 100%;
+    --leftfpos2: 100%;
+    --leftnpos2: 100%;
+    --leftfpos3: 100%;
+    --leftnpos3: 100%;
 }
